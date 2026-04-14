@@ -77,9 +77,13 @@ ts = [t]
 Tes = [Te]
 Tls = [Tl]
 
-n = 100
+# set number of steps
+n = 1000
+# set final time
 t_f = 0.5*10**(-12)
+
 dt = (t_f-t)/n
+
 model = TempSim(Te, Tl)
 for i in range(n):
     g = model.g()
@@ -91,8 +95,6 @@ for i in range(n):
   
     model.set_electron_temp(Te)
     model.set_lattice_temp(Tl)
-
-
 
     t = t+dt
     ts.append(t)
