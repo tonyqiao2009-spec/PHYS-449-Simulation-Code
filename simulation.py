@@ -20,7 +20,7 @@ class TempSim:
         self.lattice_heat_capacity = self.get_lattice_heat_capacity()
 
     def get_spectral_func(self):
-        file_path_spectral = 'PHYS-449-Simulation-Code/Excel Sheets/Spectral Function.csv'
+        file_path_spectral = 'Excel Sheets/Spectral Function.csv'
         data = np.loadtxt(file_path_spectral, delimiter=',')
         x = data[:,0]*10**(-3)/hbar_eV
         y = data[:,1]
@@ -28,7 +28,7 @@ class TempSim:
         return spec_func
     
     def get_lattice_heat_capacity(self):
-        file_path_lattice_heat_capacity = 'PHYS-449-Simulation-Code/Excel Sheets/Lattice Heat Capacity.csv'
+        file_path_lattice_heat_capacity = 'Excel Sheets/Lattice Heat Capacity.csv'
         data = np.loadtxt(file_path_lattice_heat_capacity, delimiter=',')
         x = data[:,0]
         y = data[:,1]
@@ -77,7 +77,7 @@ ts = [t]
 Tes = [Te]
 Tls = [Tl]
 
-n = 1000
+n = 100
 t_f = 0.5*10**(-12)
 dt = (t_f-t)/n
 model = TempSim(Te, Tl)
@@ -100,7 +100,7 @@ for i in range(n):
     Tls.append(Tl)
 
 
-file_path_save = 'PHYS-449-Simulation-Code/Temperature Series/'
+file_path_save = 'Temperature Series/'
 series = np.stack([ts, Tes, Tls], axis=1)
 df = pd.DataFrame(series, columns=['t', 'Te', 'Tl'])
 # save folder
